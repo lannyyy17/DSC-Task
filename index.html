@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlopOrNot | Engagement Predictor</title>
+    <meta name="description" content="Predict your Instagram engagement using a rule-based AI algorithm.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-mesh"></div>
+    <main class="container">
+        <header>
+            <h1>Flop<span>OrNot</span></h1>
+            <p>Predict your post's engagement before you hit publish</p>
+        </header>
+
+        <section class="predictor-card card-glass">
+            <form id="predictor-form">
+                <div class="form-group">
+                    <label>Content Type</label>
+                    <div class="radio-group" id="content-btn-group">
+                        <label class="radio-btn">
+                            <input type="radio" name="content_type" value="reel" checked>
+                            <span class="btn-content">Reel</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="content_type" value="carousel">
+                            <span class="btn-content">Carousel</span>
+                        </label>
+                        <label class="radio-btn">
+                            <input type="radio" name="content_type" value="image">
+                            <span class="btn-content">Image</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label for="hour">Posting Time</label>
+                        <span id="time-val">6:00 PM</span>
+                    </div>
+                    <input type="range" id="hour" min="0" max="23" value="18">
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label for="hashtags">Number of Hashtags</label>
+                        <span id="hashtags-val">5</span>
+                    </div>
+                    <input type="range" id="hashtags" min="0" max="30" value="5">
+                </div>
+
+                <div id="reel-options-group">
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label for="duration">Video Duration</label>
+                            <span id="duration-val">15s</span>
+                        </div>
+                        <input type="range" id="duration" min="1" max="90" value="15">
+                    </div>
+
+                    <div class="form-group row-group" style="margin-top: 1.5rem;">
+                        <div class="input-wrapper" style="flex: 2;">
+                            <label for="genre">Reel Genre</label>
+                            <select id="genre" class="custom-select">
+                                <option value="entertainment">Entertainment & Comedy</option>
+                                <option value="education">Education & Tech</option>
+                                <option value="lifestyle">Lifestyle & Fashion</option>
+                                <option value="fitness">Fitness & Health</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="trending-topic">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Uses Trending Audio or Topic</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="predict-btn">Analyze Engagement</button>
+            </form>
+
+            <div id="result-container" class="result hidden">
+                <div class="result-icon" id="result-icon"></div>
+                <h3 id="result-title">High Engagement</h3>
+                <p id="result-desc">Your reel is optimized for maximum reach!</p>
+            </div>
+        </section>
+
+        <!-- Charts for Parity with the Python Script Visualization -->
+        <section class="charts-section card-glass" style="margin-top: 2rem;">
+            <h2 style="margin-bottom: 1.5rem; font-size: 1.2rem; text-align: center;">Dataset Observations</h2>
+            <div class="charts-container">
+                <canvas id="typeChart"></canvas>
+                <div style="height: 20px;"></div>
+                <canvas id="scatterChart"></canvas>
+            </div>
+        </section>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
